@@ -1,0 +1,17 @@
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: mindbridge-frontend
+    restart: always
+    ports:
+      - 8080:8080
+    environment:
+      NODE_ENV: production
+    networks:
+      - mindbridge-network
+
+networks:
+  mindbridge-network:
+    driver: bridge

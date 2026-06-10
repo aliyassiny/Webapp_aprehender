@@ -1,0 +1,41 @@
+services:
+  db:
+    image: postgres:16
+    restart: always
+    container_name: mindbridge-db
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    ports:
+      - 5433:5432
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - mindbridge-network
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: mindbridge-backend
+    restart: always
+    ports:
+      - 3000:3000
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}
+      JWT_SECRET: ${JWT_SECRET}
+      NODE_ENV: production
+    depends_on:
+      - db
+    networks:
+      - mindbridge-network
+    volumes:
+      - ./prisma:/app/prisma
+
+volumes:
+  postgres_data:
+
+networks:
+  mindbridge-network:
+    driver: bridge

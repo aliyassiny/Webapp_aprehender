@@ -1,0 +1,216 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 150 10% 97%;
+    --foreground: 170 25% 12%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 170 25% 12%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 170 25% 12%;
+
+    --primary: 170 45% 22%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 165 20% 95%;
+    --secondary-foreground: 170 25% 12%;
+
+    --muted: 160 12% 93%;
+    --muted-foreground: 170 10% 46%;
+
+    --accent: 168 50% 38%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 165 18% 88%;
+    --input: 165 18% 88%;
+    --ring: 170 45% 22%;
+
+    --radius: 0.625rem;
+
+    /* Custom tokens */
+    --brand-dark: 170 50% 16%;
+    --brand-teal: 170 45% 22%;
+    --brand-light: 168 50% 38%;
+    --brand-surface: 165 30% 95%;
+
+    --status-active: 152 60% 42%;
+    --status-pending: 38 92% 50%;
+    --status-cancelled: 0 72% 60%;
+    --status-completed: 168 50% 38%;
+    --status-scheduled: 210 60% 50%;
+
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 170 10% 40%;
+    --sidebar-primary: 168 50% 38%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 165 30% 95%;
+    --sidebar-accent-foreground: 170 25% 12%;
+    --sidebar-border: 165 18% 90%;
+    --sidebar-ring: 170 45% 22%;
+
+    --cta-gradient: linear-gradient(135deg, hsl(170, 45%, 22%) 0%, hsl(168, 50%, 32%) 100%);
+    --card-highlight: linear-gradient(135deg, hsl(170, 45%, 22%) 0%, hsl(170, 40%, 28%) 100%);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply tracking-tight;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+    overflow-wrap: break-word;
+  }
+}
+
+@layer components {
+  .brand-card-dark {
+    background: var(--card-highlight);
+    @apply text-primary-foreground rounded-xl p-6;
+  }
+
+  .status-badge {
+    @apply inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium;
+  }
+
+  .status-active {
+    @apply status-badge;
+    background: hsl(var(--status-active) / 0.12);
+    color: hsl(var(--status-active));
+  }
+
+  .status-pending {
+    @apply status-badge;
+    background: hsl(var(--status-pending) / 0.12);
+    color: hsl(var(--status-pending));
+  }
+
+  .status-cancelled {
+    @apply status-badge;
+    background: hsl(var(--status-cancelled) / 0.12);
+    color: hsl(var(--status-cancelled));
+  }
+
+  .status-completed {
+    @apply status-badge;
+    background: hsl(var(--status-completed) / 0.12);
+    color: hsl(var(--status-completed));
+  }
+
+  .status-scheduled {
+    @apply status-badge;
+    background: hsl(var(--status-scheduled) / 0.12);
+    color: hsl(var(--status-scheduled));
+  }
+}
+
+
+/* From Uiverse.io by mobinkakei */ 
+.wrapper {
+  width: 200px;
+  height: 60px;
+  position: relative;
+  z-index: 1;
+}
+
+.circle {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  border-radius: 50%;
+  background-color: #fff;
+  left: 15%;
+  transform-origin: 50%;
+  animation: circle7124 .5s alternate infinite ease;
+}
+
+@keyframes circle7124 {
+  0% {
+    top: 60px;
+    height: 5px;
+    border-radius: 50px 50px 25px 25px;
+    transform: scaleX(1.7);
+  }
+
+  40% {
+    height: 20px;
+    border-radius: 50%;
+    transform: scaleX(1);
+  }
+
+  100% {
+    top: 0%;
+  }
+}
+
+.circle:nth-child(2) {
+  left: 45%;
+  animation-delay: .2s;
+}
+
+.circle:nth-child(3) {
+  left: auto;
+  right: 15%;
+  animation-delay: .3s;
+}
+
+.shadow {
+  width: 20px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: rgba(0,0,0,0.9);
+  position: absolute;
+  top: 62px;
+  transform-origin: 50%;
+  z-index: -1;
+  left: 15%;
+  filter: blur(1px);
+  animation: shadow046 .5s alternate infinite ease;
+}
+
+@keyframes shadow046 {
+  0% {
+    transform: scaleX(1.5);
+  }
+
+  40% {
+    transform: scaleX(1);
+    opacity: .7;
+  }
+
+  100% {
+    transform: scaleX(.2);
+    opacity: .4;
+  }
+}
+
+.shadow:nth-child(4) {
+  left: 45%;
+  animation-delay: .2s
+}
+
+.shadow:nth-child(5) {
+  left: auto;
+  right: 15%;
+  animation-delay: .3s;
+}
