@@ -90,12 +90,10 @@ POSTGRES_USER=usuario
 POSTGRES_PASSWORD=password
 POSTGRES_DB=MindBridgeDB
 JWT_SECRET=tu_secreto_jwt
+JWT_ACCESS_EXPIRES_IN = Tu tiempo de expiracion
+JWT_REFRESH_SECRET = Tu secreto de refresco
 ```
 
-## 📚 Documentación Adicional
-
-- [DIAGRAMS_INSTRUCTIONS.md](./DIAGRAMS_INSTRUCTIONS.md) - Especificaciones de arquitectura
-- [DEVELOPMENT_PROCESS.md](./DEVELOPMENT_PROCESS.md) - Proceso de desarrollo detallado
 
 ## 🛠️ Tecnologías Principales
 
